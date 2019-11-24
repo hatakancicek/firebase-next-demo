@@ -1,0 +1,30 @@
+{
+  "functions": {
+    "predeploy": "yarn clean && yarn build:app && yarn build:functions && yarn copy:deps && yarn copy:pages",
+    "source": "dist/functions"
+  },
+  "hosting": {
+    "predeploy": "yarn copy:next && yarn copy:static",
+    "public": "dist/public",
+    "rewrites": [
+      {
+        "source": "/",
+        "function": "index"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|svg|css|js|woff2|webp)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000"
+          }
+        ]
+      }
+    ],
+    "cleanUrls": true,
+
+    "trailingSlash": false
+  }
+}

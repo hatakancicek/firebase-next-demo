@@ -1,0 +1,35 @@
+{
+  "license": "MIT",
+  "name": "next-firebase-demo",
+  "version": "1.0.0",
+  "description": "Caizler.com",
+  "author": "Hüseyin Atakan Çiçek",
+  "repository": "https://github/hatakancicek/next-firebase-demo",
+  "engines": {
+    "node": "10"
+  },
+  "dependencies": {
+    "next": "9.0.3",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "firebase-admin": "8.3.0",
+    "styled-components": "4.3.2",
+    "firebase-functions": "3.2.0"
+  },
+  "devDependencies": {
+    "cpx": "1.5.0",
+    "rimraf": "3.0.0",
+    "firebase-tools": "7.2.2",
+    "babel-plugin-styled-components": "1.10.6"
+  },
+  "scripts": {
+    "dev": "next src/app",
+    "clean": "rimraf dist",
+    "build:app": "next build src/app",
+    "build:functions": "cpx \"src/functions/**/*.*\" dist/functions",
+    "copy:static": "cpx \"src/app/static/**/*.*\" dist/public/static",
+    "copy:next": "cpx \"dist/next/static/**/*.*\" dist/public/_next/static",
+    "copy:deps": "cpx \"*{package.json,package-lock.json}\" dist/functions",
+    "copy:pages": "cpx \"dist/next/serverless/pages/**/*.*\" dist/functions/pages"
+  }
+}
